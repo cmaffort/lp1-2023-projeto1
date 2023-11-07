@@ -4,7 +4,6 @@ package br.cefetmg.biosit.DAOMySQL;
 import br.cefetmg.biosit.dto.Medicamento;
 import br.cefetmg.biosit.idao.IMedicamentoDAO;
 import br.cefetmg.biosit.dto.exception.*;
-import java.util.Date;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,7 +30,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
     
     @Override
     public boolean inserir(Medicamento medicamento) throws CadastroException {
-        String query = "INSERT INTO medicamentos (nome, data, quantidade, fornecedora, lote) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO medicamentos (nome, data, quantidade, fornecedora, lote) VALUES (?, ?, ?, ?, ?)";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
@@ -39,7 +38,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             
             preparedStatement.setString(1, medicamento.getNome());
-            preparedStatement.setDate(2, new java.sql.Date(medicamento.getData().getTime()));
+            preparedStatement.setString(2, medicamento.getData());
             preparedStatement.setInt(3, medicamento.getQuantRestante());
             preparedStatement.setString(4, medicamento.getFornecedora());
             preparedStatement.setInt(5, medicamento.getLote());
@@ -61,7 +60,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setString(1, medicamento.getNome());
-            preparedStatement.setDate(2, new java.sql.Date(medicamento.getData().getTime()));
+            preparedStatement.setString(2, medicamento.getData());
             preparedStatement.setInt(3, medicamento.getQuantRestante());
             preparedStatement.setString(4, medicamento.getFornecedora());
             preparedStatement.setInt(5, medicamento.getLote());
@@ -84,7 +83,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
              preparedStatement.setString(1, medicamento.getNome());
-            preparedStatement.setDate(2, new java.sql.Date(medicamento.getData().getTime()));
+            preparedStatement.setString(2, medicamento.getData());
             preparedStatement.setInt(3,    medicamento.getQuantRestante());
             preparedStatement.setString(4, medicamento.getFornecedora());
             preparedStatement.setInt(5, medicamento.getLote());
@@ -112,7 +111,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Medicamento medicamento = new Medicamento(resultSet.getString("nome"),new Date(resultSet.getString("data")),resultSet.getInt("quantidade"),resultSet.getString("fornecedora"),resultSet.getInt("lote"));
+                Medicamento medicamento = new Medicamento(resultSet.getString("nome"),resultSet.getString("data"),resultSet.getInt("quantidade"),resultSet.getString("fornecedora"),resultSet.getInt("lote"));
                 medicamentos.add(medicamento);
             }
             connection.close();
@@ -132,7 +131,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Medicamento medicamento = new Medicamento(resultSet.getString("nome"),new Date(resultSet.getString("data")),resultSet.getInt("quantidade"),resultSet.getString("fornecedora"),resultSet.getInt("lote"));
+                Medicamento medicamento = new Medicamento(resultSet.getString("nome"),resultSet.getString("data"),resultSet.getInt("quantidade"),resultSet.getString("fornecedora"),resultSet.getInt("lote"));
                 medicamentos.add(medicamento);
             }
             connection.close();
@@ -153,7 +152,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Medicamento medicamento = new Medicamento(resultSet.getString("nome"),new Date(resultSet.getString("data")),resultSet.getInt("quantidade"),resultSet.getString("fornecedora"),resultSet.getInt("lote"));
+                Medicamento medicamento = new Medicamento(resultSet.getString("nome"),resultSet.getString("data"),resultSet.getInt("quantidade"),resultSet.getString("fornecedora"),resultSet.getInt("lote"));
                 medicamentos.add(medicamento);
             }
             connection.close();
@@ -162,7 +161,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
         }
         return medicamentos;
     }
-    public List<Medicamento> pesquisarValidade(Date validade) throws Exception {
+    public List<Medicamento> pesquisarValidade(String validade) throws Exception {
         String query = "SELECT * FROM medicamento WHERE data = ?";
         List<Medicamento> medicamentos = new ArrayList<>();
         
@@ -173,7 +172,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Medicamento medicamento = new Medicamento(resultSet.getString("nome"),new Date(resultSet.getString("data")),resultSet.getInt("quantidade"),resultSet.getString("fornecedora"),resultSet.getInt("lote"));
+                Medicamento medicamento = new Medicamento(resultSet.getString("nome"),resultSet.getString("data"),resultSet.getInt("quantidade"),resultSet.getString("fornecedora"),resultSet.getInt("lote"));
                 medicamentos.add(medicamento);
             }
             connection.close();
@@ -194,7 +193,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Medicamento medicamento = new Medicamento(resultSet.getString("nome"),new Date(resultSet.getString("data")),resultSet.getInt("quantidade"),resultSet.getString("fornecedora"),resultSet.getInt("lote"));
+                Medicamento medicamento = new Medicamento(resultSet.getString("nome"),resultSet.getString("data"),resultSet.getInt("quantidade"),resultSet.getString("fornecedora"),resultSet.getInt("lote"));
                 medicamentos.add(medicamento);
             }
             connection.close();
@@ -215,7 +214,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
             
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Medicamento medicamento = new Medicamento(resultSet.getString("nome"),new Date(resultSet.getString("data")),resultSet.getInt("quantidade"),resultSet.getString("fornecedora"),resultSet.getInt("lote"));
+                Medicamento medicamento = new Medicamento(resultSet.getString("nome"),resultSet.getString("data"),resultSet.getInt("quantidade"),resultSet.getString("fornecedora"),resultSet.getInt("lote"));
                 medicamentos.add(medicamento);
             }
             

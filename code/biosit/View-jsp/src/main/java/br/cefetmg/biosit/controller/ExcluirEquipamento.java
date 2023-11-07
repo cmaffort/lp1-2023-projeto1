@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import br.cefetmg.biosit.dto.Equipamento;
 import br.cefetmg.biosit.service.ICadastrarEquipamento;
 import br.cefetmg.biosit.service.implement.ManterEquipamento;
-import java.util.Date;
 
 @WebServlet("/excluirEquipamento")
 public class ExcluirEquipamento extends HttpServlet {
@@ -17,7 +16,7 @@ public class ExcluirEquipamento extends HttpServlet {
         try {
             String nome = request.getParameter("nome"); 
             String fornecedora = request.getParameter("fornecedora");
-            Date data = new Date(request.getParameter("data"));
+            String data = request.getParameter("data");
             String setor = request.getParameter("setor");
             int quantidade = Integer.parseInt(request.getParameter("quantidade"));
 

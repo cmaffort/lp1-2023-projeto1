@@ -17,6 +17,6 @@ public interface IMedicamentoDAO {
     List<Medicamento> pesquisarFornecedora(String fornecedora) throws Exception;
     List<Medicamento> pesquisarLote(int lote) throws Exception;
     List<Medicamento> pesquisarQuantidade(int quantidade) throws Exception;
-    List<Medicamento> pesquisarValidade(Date validade) throws Exception;
+    List<Medicamento> pesquisarValidade(String validade) throws Exception;
     List<Medicamento> pesquisarTodos() throws Exception;
 }

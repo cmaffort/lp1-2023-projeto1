@@ -9,7 +9,7 @@ import java.util.Date;
     public class Medicamento  {
         private String fornecedora;
         private String nome;
-        private Date dataValidade;
+        private String dataValidade;
         private int lote;
         private int quantRestante;
 
@@ -29,11 +29,11 @@ import java.util.Date;
         this.fornecedora = fornecedora;
     }
 
-    public Date getData() {
+    public String getData() {
         return dataValidade;
     }
 
-    public void setData(Date dataValidade) {
+    public void setData(String dataValidade) {
         this.dataValidade = dataValidade;
     }
 
@@ -53,7 +53,7 @@ import java.util.Date;
         this.quantRestante = quantRestante;
     }
         
-    public Medicamento (String nome, Date data, int quant, String fornecedora, int lote) {
+    public Medicamento (String nome, String data, int quant, String fornecedora, int lote) {
 
     }
 

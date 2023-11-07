@@ -6,7 +6,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.Date;
 import br.cefetmg.biosit.dto.Medicamento;
 import br.cefetmg.biosit.service.ICadastrarMedicamento;
 import br.cefetmg.biosit.service.implement.ManterMedicamento;
@@ -22,7 +21,7 @@ public class CadastrarMedicamento extends HttpServlet {
         try {
             String nome = request.getParameter("nome");
             String fornecedora = request.getParameter("fornecedora");
-            Date dataValidade = new Date(request.getParameter("dataValidade"));           
+            String dataValidade = request.getParameter("dataValidade");           
             int lote = Integer.parseInt("lote");
             int quantidadeRestante = Integer.parseInt("quantidade");
             

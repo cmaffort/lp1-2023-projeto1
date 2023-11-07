@@ -9,7 +9,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.Date;
 import br.cefetmg.biosit.dto.Equipamento;
 import br.cefetmg.biosit.service.ICadastrarEquipamento;
 import br.cefetmg.biosit.service.implement.ManterEquipamento;
@@ -25,7 +24,7 @@ public class CadastrarEquipamento extends HttpServlet {
         try {
             String nome = request.getParameter("nome");
             String fornecedora = request.getParameter("fornecedora");
-            Date data = new Date(request.getParameter("data"));
+            String data = request.getParameter("data");
             String setor = request.getParameter("setor");
             int quantidade = Integer.parseInt(request.getParameter("quantidade"));
             

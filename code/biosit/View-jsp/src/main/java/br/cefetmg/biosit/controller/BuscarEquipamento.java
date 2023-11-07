@@ -1,7 +1,6 @@
 
 package br.cefetmg.biosit.controller;
 
-import java.util.Date;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -25,7 +24,7 @@ public class BuscarEquipamento {
             
             String nome = request.getParameter("nome");
             String fornecedora = request.getParameter("fornecedora");
-            Date data = new Date(request.getParameter("data"));
+            String data = request.getParameter("data");
             String setor = request.getParameter("setor");
             int quantidade = Integer.parseInt(request.getParameter("quantidade"));
             Equipamento equipamento = new Equipamento(nome, data, quantidade, fornecedora, setor);

@@ -20,7 +20,7 @@ import br.cefetmg.biosit.idao.IMedicamentoDAO;
 public class ManterMedicamento implements ICadastrarMedicamento {
     private IMedicamentoDAO medicamentoDAO;
    
-    
+    @Override
     public String cadastrar(Medicamento medicamento) throws CadastroException {
         
         if(Util.verify(medicamento.getNome())) {
