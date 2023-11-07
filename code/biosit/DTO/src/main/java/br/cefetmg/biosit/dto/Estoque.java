@@ -4,7 +4,7 @@
  */
 
 import java.util.Date;
-    public class estoque  {
+    public class Estoque  {
         private String fornecedora;
         private String nome;
         private Date data;
@@ -44,7 +44,7 @@ import java.util.Date;
         this.quant = quant;
     }
         
-        public estoque (String fornecedora, String nome, Date data, String setor, int quant) {
+        public Estoque (String fornecedora, String nome, Date data, String setor, int quant) {
 
         }
 
