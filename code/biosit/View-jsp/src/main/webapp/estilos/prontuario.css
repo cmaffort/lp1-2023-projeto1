@@ -9,9 +9,6 @@
     --fonte-principal: 'Raleway', sans-serif;
 }
 
-#prontuario {
-    width: 45vw;
-}
 
 #frm {
     display: flex;
@@ -22,11 +19,17 @@
 main {
 }
 
+#containerwt {
+    background-color: white;
+    margin: 25px;
+    box-shadow: 1px 1px 17px 1px #7a8383;
+    padding: 15px;
+}
+
 #dados-principais {
-    width: 30vw;
+    width: 50%;
     display: flex;
     flex-direction: row;
-    margin: 0px 20px;
     flex-wrap: wrap;
     justify-content: space-between;
 }
@@ -41,7 +44,7 @@ main {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 18px;
 }
 #nome-att {
     width: 100%;
@@ -113,8 +116,9 @@ main {
 }
 #dados-secundarios {
     display: flex;
-    width: 20vw;
+    width: 40%;
     flex-direction: column;
+    margin: 5px 0px;
 }
 #dados-secundarios label {
     margin: 1vh 0px;
@@ -136,12 +140,119 @@ main {
 #tel-att input {
     width: 100%;
 }
-#prontuario {
-    width: 40vw;
-    margin: 0px 15px;
-}
+
 
 #pron .mensagem-erro,
 #pron .mensagem-sucesso {
     width: fit-content;
+}
+
+#att-dados .secao-oculta {
+    display: none;
+}
+#att-dados .btn-secao {
+    cursor: pointer;
+    padding: 5px 10px;
+}
+#att-dados input  {
+    background-color: var(--cinza);
+}
+#menu-att-paciente {
+    width: fit-content;
+    white-space: nowrap;
+    margin: 5px 0px;
+}
+#dados-gerais {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.secao-sel {
+    margin: 5px auto;
+    border-left: 1px var(--cinza) solid;
+    padding: 0px 0px 16px 0px;
+    width: 100%;
+}
+.btn-secao.selected {
+    background-color: var(--cinza);
+}
+
+/* prontuario */
+#container-form-prontuario {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 15px;
+}
+#form-prontuario {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-family: var(--fonte-principal);
+    justify-content: space-between;
+}
+#title-pron {
+    width: 70%;
+}
+#title-pron input {
+    width: 90%;
+}
+#categoria-pron {
+    width: 25%;
+}
+#categoria-pron select {
+    width: 100%;
+}
+#desc-pron {
+    margin-top: 15px;
+    width: 100%;
+}
+#desc-pron textarea {
+    width: 100%;
+    resize: none;
+    height: 18vh;
+}
+#title-pron input,
+#categoria-pron select,
+#desc-pron textarea {
+    background-color: var(--cinza);
+    border: none;
+}
+#title-pron input,
+#categoria-pron select {
+    height: 30px;
+}
+#cont-btn-pron-registrar {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+#cont-btn-pron-registrar button {
+    padding: 5px;
+    font-size: 22px;
+    font-family: var(--fonte-principal);
+    background-color: var(--azul);
+    border: none;
+}
+
+.reg-exib-art {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid var(--cinza);
+    padding: 3px 10px 8px 10px;
+    justify-content: space-between;
+}
+.reg-exib-title {
+    width: 70%;
+    font-size: 18px;
+    padding: 0px 5px;
+}
+.reg-exib-data {
+    font-size: 14px;
+}
+.reg-exib-tipo {
+    font-size: 14px;
+}
+.reg-exib-desc {
+    width: 100%;
 }

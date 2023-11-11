@@ -32,7 +32,7 @@
                         <input type="text" name="horario" maxlength="50">
                     </label>
                  
-                    <button id="envia-consulta" type="submit" name="act" value="cadastroConsulta">Agendar</button>
+                    <button id="enviaConsulta" type="submit" name="act" value="cadastroConsulta">Agendar</button>
               </form>
                     
               
