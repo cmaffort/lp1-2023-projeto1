@@ -32,8 +32,28 @@
                         <input type="text" name="horario" maxlength="50">
                     </label>
                  
-                    <button id="enviaConsulta" type="submit" name="act" value="cadastroConsulta">Agendar</button>
+                    <button id="enviaConsulta" type="submit" name="act" value="cadastrarConsulta">Agendar</button>
+                    <%
+                    String error2 = (String) request.getAttribute("error");
+                    String tperror2 = (String) request.getAttribute("tperror");
+                    if (error2 != null && !error2.isEmpty() && tperror2.equals("cadastrarConsulta")) {
+                    %>
+                    <div class="mensagem-erro">
+                        <%= error2 %>
+                    </div>
+                    <%
+                    } else {
+                        String sucess = (String) request.getAttribute("sucess");
+                        if(sucess != null && !sucess.isEmpty()) {
+                    %>
+                    <div class="mensagem-sucesso">
+                        <%= sucess %>
+                    </div>
+                    <%
+                        } }
+                    %>
               </form>
+            </section>
                     
               
                     

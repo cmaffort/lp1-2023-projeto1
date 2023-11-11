@@ -17,7 +17,7 @@ import java.util.List;
 
 public class BuscarConsulta {
     public static String execute(HttpServletRequest request) {
-        String jsp = "/listagemPaciente.jsp";
+        String jsp = "/index.jsp";
         
         try {
             List<Consulta> consultas = new ArrayList<Consulta>();
@@ -36,9 +36,9 @@ public class BuscarConsulta {
             request.setAttribute("consultas", consultas);
             
         } catch(Exception e) {
-            request.setAttribute("tperror", "pesquisaConsula");
+            request.setAttribute("tperror", "pesquisaConsulta");
             request.setAttribute("error", e.getMessage());
-            jsp = "/consulta.jsp";
+            jsp = "/index.jsp";
         }
         
         return jsp;

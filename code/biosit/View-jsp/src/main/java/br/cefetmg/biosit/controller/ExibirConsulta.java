@@ -15,25 +15,23 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  *
- * @author pjusti19
+ * @author Pedro Gabriel
  */
-public class ExcluirConsulta {
+public class ExibirConsulta {
     public static String execute(HttpServletRequest request) {
         String jsp = "/infoConsultas.jsp";
-        
         try {
-            
-            String nomePaciente = request.getParameter("consultaExcluir");
+            String medico = request.getParameter("nomeExibir");
+
             AgendarConsulta agendarConsulta = new AgendarConsulta();
-            agendarConsulta.excluir(nomePaciente);
+            Consulta consulta = agendarConsulta.pesquisar(medico);
             
+            request.setAttribute("consulta_exib", consulta);
         } catch(Exception e) {
-            request.setAttribute("tperror", "excluirConsulta");
             request.setAttribute("error", e.getMessage());
-            jsp = "/infoConsultas.jsp";
+            request.setAttribute("tperror", "pesquisaConsulta");
+            jsp = "/index.jsp";
         }
-        
         return jsp;
     }
-
 }

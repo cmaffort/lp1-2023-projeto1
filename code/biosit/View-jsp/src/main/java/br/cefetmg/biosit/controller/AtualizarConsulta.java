@@ -36,7 +36,7 @@ public class AtualizarConsulta {
             AgendarConsulta agendarConsulta = new AgendarConsulta();
             agendarConsulta.atualizar(consulta);
             
-            request.setAttribute("paciente_exib", consulta);
+            request.setAttribute("consulta_exib", consulta);
             request.setAttribute("sucess", "Dados atualizados com sucesso");
             
         } catch (Exception e) {

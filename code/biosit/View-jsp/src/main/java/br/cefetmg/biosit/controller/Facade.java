@@ -75,15 +75,15 @@ public class Facade extends HttpServlet {
         } else if(act.equals("excluirMedicamento")) {
             jsp = ExcluirMedicamento.execute(request);
         } else if(act.equals("cadastrarConsulta")) {
-            jsp = CadastrarPaciente.execute(request);
+            jsp = CadastrarConsulta.execute(request);
         } else if(act.equals("buscarConsulta")) {
-            jsp = BuscarPaciente.execute(request);
+            jsp = BuscarConsulta.execute(request);
         } else if(act.equals("exibirConsulta")) {
-            jsp = ExibirPaciente.execute(request);
+            jsp = ExibirConsulta.execute(request);
         } else if(act.equals("atualizaConsulta")) {
-            jsp = AtualizarPaciente.execute(request);
+            jsp = AtualizarConsulta.execute(request);
         } else if(act.equals("excluirConsulta")) {
-            jsp = ExcluirPaciente.execute(request);
+            jsp = ExcluirConsulta.execute(request);
         }
         RequestDispatcher rd = request.getRequestDispatcher(jsp);
         rd.forward(request, response);

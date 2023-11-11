@@ -114,4 +114,18 @@ button:hover {
     margin: 2vh auto;
 }
 
+.mensagem-erro {
+    border: 1px solid red;
+    padding: 10px;
+    font-size: 24px;
+    color: red;
+    background-color: #d11d1d63;
+}
+.mensagem-sucesso {
+    border: 1px solid blue;
+    padding: 10px;
+    font-size: 24px;
+    color: blue;
+    background-color: #203fca4a;
+}
 
