@@ -8,6 +8,7 @@
 #calendario {
     padding: 1%;
     width: min-content;
+    height: min-content;
     text-align: center;
 }
 
@@ -21,6 +22,7 @@
 
 #agenda{
     padding: 1%;
+    width: 30vw;
 }
 
 #agenda, #calendario{
@@ -58,11 +60,100 @@
     height: 2vh;
 }
 
-/* css do botão de agendar consulta*/
+/* css da busca de consulta */
 
-#divisao {
+#agenda .busca form{
     display: flex;
+    flex-direction: column;
+}
+#nome-medico-busca{
     width: 100%;
-    justify-content: center;
+}
+#nome-medico-busca input{
+    width: 100%;
+}
+
+#urgencia-busca {
+    width: 45%;
+}
+#urgencia-busca input {
+    width: 100%;
+}
+
+#data-busca, #hora-busca{
+    width: 45%;
+}
+
+#nome-paciente-busca {
+    width: 100%;
+}
+#nome-paciente-busca input {
+    width: 100%;
+}
+
+#descricao-busca {
+    width: 100%;
+}
+#descricao-busca input {
+    width: 100%;
+}
+
+#agenda .busca h3{
+    width: 100%;
+}
+
+#agenda .busca form button, #agendar{
+    background-color: var(--azul);
+    width: 100%;
+    padding: 20px auto;
+}
+#agenda .busca form input {
+    background-color: var(--cinza);
+    height: 2vh;
+}
+#agenda .busca{
+    font-family: 'Raleway', sans-serif;;
+}
+#agenda .busca form input,
+#agenda .busca form button{
+    border-radius: 0px;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#agenda .busca form h3,
+#agenda .busca form label,
+#agenda .busca form input,
+#agenda .busca form button {
+}
+#agenda .busca form label{
+    margin: 1vh 0px;
+}
+#agenda .busca form label,
+#agenda .busca form button, #agendar{
+    color: #505053;
+    font-size: 20px;
+}
+#agenda .busca form button, #agendar{
+    height: 40px;
+    margin: 2vh auto;
+}
+
+.mensagem-erro {
+    border: 1px solid red;
+    padding: 10px;
+    font-size: 20px;
+    color: red;
+    background-color: #d11d1d63;
+}
+.mensagem-sucesso {
+    border: 1px solid blue;
+    padding: 10px;
+    font-size: 24px;
+    color: blue;
+    background-color: #203fca4a;
 }
 

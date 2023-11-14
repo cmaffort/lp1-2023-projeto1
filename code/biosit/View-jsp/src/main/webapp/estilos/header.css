@@ -17,7 +17,6 @@ header h3 {
 
 #icone {
     height: 90%;
-    width: 12vh;
 }
 #icone:hover {
     cursor: pointer;
@@ -33,6 +32,9 @@ header h3 {
     margin-top: 1%;
     margin-right: 30%;
     border-radius: 5px;
+    border: none;
+    border-color: white;
+    box-shadow: none;
 }
 
 #sino {
@@ -48,6 +50,7 @@ header h3 {
     right: 0px;
     transition: right 0.5s;
     border-radius: 5px;
+    box-shadow: 1px 1px 17px 1px #7a8383;
 }
 #opcoes.menu-escondido, #notificacoes.menu-escondido {
     right: -1000px; 

@@ -84,7 +84,7 @@ h3{
     box-shadow: 1px 1px 17px 1px #7a8383;
 }
 
-#agendar, #confirmar, #consultarHistorico, #removerEquipamento, #cadastrar, #baixarfinanceiro, #buscar-financeiro, #financeiro .sla form button, #consulta .agendamento form button{
+#agendar, #confirmar, #consultarHistorico, #removerEquipamento, #cadastrar, #baixarfinanceiro, #buscar-financeiro, #financeiro .sla form button, #consulta .agendamento form button, #agenda .busca form button{
    border: none;
    color: #505053;
    background-color: var(--azul);
@@ -93,17 +93,18 @@ h3{
    padding-left: 2vh;
    padding-right: 2vh;
    text-align: center;
+   cursor: pointer;
 }
 
 #agendar:hover, #confirmar:hover, #consultarHistorico:hover, #removerEquipamento:hover, #cadastrar:hover, 
 #baixar-financeiro:hover, #buscar-financeiro:hover, #financeiro .sla form button:hover, #consulta .agendamento form button:hover , 
-#paciente .cadastro form button:hover, #paciente .buscar form button:hover{
+#paciente .cadastro form button:hover, #paciente .buscar form button:hover, #agenda .busca form button:hover{
     background-color: rgb(15, 156, 221);
 }
 
 #agendar:active, #confirmar:active, #consultarHistorico:active, #removerEquipamento:active, #cadastrar:active, 
 #baixar-financeiro:active, #buscar-financeiro:active, #financeiro .sla form button:active, #consulta .agendamento form button:active , 
-#paciente .cadastro form button:active, #paciente .buscar form button:active{
+#paciente .cadastro form button:active, #paciente .buscar form button:active, #agenda .busca form button:active{
     background-color: rgb(11, 129, 184);
 }
 

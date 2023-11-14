@@ -17,19 +17,19 @@
                         <input type="text" name="nomePaciente">
                     </label>
                     <label id="descricao">Descrição:<br>
-                        <input type="text" name="descricao" maxlength="50">
+                        <input type="text" name="descricao" maxlength="100">
                     </label>
                     <label id="urgencia">Urgência:<br>
                         <input type="text" name="urgencia">
                     </label>
                     <label id="nome-medico">Médico:<br>
-                        <input type="text" name="medico" maxlength="50">
+                        <input type="text" name="medico" maxlength="100">
                     </label> 
-                    <label id="data-hora">Data:<br>
-                        <input type="text" name="data" maxlength="50">
+                    <label id="data">Data:<br>
+                        <input type="text" name="data" maxlength="10">
                     </label>
-                    <label id="data-hora">Horário:<br>
-                        <input type="text" name="horario" maxlength="50">
+                    <label id="hora">Horário:<br>
+                        <input type="text" name="horario" maxlength="10">
                     </label>
                  
                     <button id="enviaConsulta" type="submit" name="act" value="cadastrarConsulta">Agendar</button>

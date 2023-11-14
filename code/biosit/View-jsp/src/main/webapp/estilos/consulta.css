@@ -6,7 +6,7 @@
     --fonte-principal: 'Raleway', sans-serif;
 }
 
-main#consulta {
+main#consulta, main#consulta-att {
     height: 80vh;
     padding: 30px;
     display: flex;
@@ -16,62 +16,73 @@ main#consulta {
     gap: 70px;
 }
 
-main#consulta section {
+main#consulta section, 
+main#consulta-att section {
     padding: 15px;
 }
 #consulta input {
     box-sizing: border-box;
 }
-#consulta .agendamento {
+#consulta .agendamento, 
+#consulta-att .atualizacao {
     background-color: white;
     width: 30vw;
     box-shadow: 1px 1px 17px 1px #7a8383;
 }
 
-#consulta .agendamento h3{
+#consulta .agendamento h3, 
+#consulta-att .atualizacao h3{
     text-align: center;
     font-size: 40px;
 }
-#consulta .agendamento form{
+#consulta .agendamento form, 
+#consulta-att .atualizacao form{
     display: flex;
     flex-direction: column;
 }
-#nome-medico{
+#nome-medico, 
+#nome-medico-att{
     width: 100%;
 }
-#nome-medico input{
+#nome-medico input, 
+#nome-medico-att input{
     width: 100%;
 }
 
-#urgencia {
+#urgencia, 
+#urgencia-att {
     width: 45%;
 }
-#urgencia input {
+#urgencia input, 
+#urgencia-att input {
     width: 100%;
 }
 
-#data-hora{
+#data, #hora, 
+#data-att, #hora-att{
     width: 45%;
 }
-#data-hora {
+
+#nome-paciente, 
+#nome-paciente-att {
+    width: 100%;
+}
+#nome-paciente input, 
+#nome-paciente-att input {
     width: 100%;
 }
 
-#nome-paciente {
+#descricao, 
+#descricao-att {
     width: 100%;
 }
-#nome-paciente input {
-    width: 100%;
-}
-
-#descricao {
-    width: 100%;
-}
-#descricao input {
+#descricao input, 
+#descricao-att input {
     width: 100%;
 }
 
-#consulta .agendamento h3{
+#consulta .agendamento h3, 
+#consulta-att .atualizacao h3{
     width: 100%;
 }
 
@@ -80,15 +91,17 @@ main#consulta section {
     width: 100%;
     padding: 20px auto;
 }
-#consulta .agendamento form input {
+#consulta .agendamento form input, 
+#consulta-att .atualizacao form input {
     background-color: var(--cinza);
     height: 4vh;
 }
-#consulta .agendamento{
-    font-family: 'Raleway', sans-serif;;
+#consulta .agendamento, #consulta-att .atualizacao{
+    font-family: 'Raleway', sans-serif;
 }
 #consulta .agendamento form input,
-#consulta .agendamento form button{
+#consulta .agendamento form button,
+#consulta-att .atualizacao form input{
     border-radius: 0px;
     border: none;
 }
@@ -97,22 +110,68 @@ button:hover {
     cursor: pointer;
 }
 
-#consulta .agendamento form h3,
-#consulta .agendamento form label,
-#consulta .agendamento form input,
-#consulta .agendamento form button {
-}
-#consulta .agendamento form label{
+#consulta .agendamento form label, 
+#consulta-att .atualizacao form label{
     margin: 1vh 0px;
 }
 #consulta .agendamento form label,
-#consulta .agendamento form button{
+#consulta .agendamento form button,
+#consulta-att .atualizacao form label{
     color: #505053;
 }
 #consulta .agendamento form button{
     height: 60px;
     margin: 2vh auto;
 }
+
+#att-btn{
+    display: flex;
+    justify-content: center
+}
+
+#consulta-att #btn-voltar {
+    background-color: var(--azul);
+    padding: 2vh 3vw;
+    border-radius: 0px;
+    border: none;
+    font-size: 20px;
+    margin: auto auto;
+    cursor: pointer;
+}
+#consulta-att #btn-delete {
+    background-color: var(--azul);
+    padding: 2vh 3vw;
+    border-radius: 0px;
+    border: none;
+    font-size: 20px;
+    margin: auto auto;
+    cursor: pointer;
+}
+
+#atualiza-consulta {
+    background-color: var(--azul);
+    border-radius: 0px;
+    padding: 2vh 3vw;
+    border: none;
+    font-size: 20px;
+    margin: auto auto;
+    font-family: var(--fonte-principal);
+}
+
+#consulta-att #btn-delete:hover,
+#consulta-att #btn-voltar:hover,
+#atualiza-consulta:hover,
+#listagemConsulta .btn-voltar:hover{
+    background-color: rgb(15, 156, 221);
+}
+
+#consulta-att #btn-delete:active,
+#consulta-att #btn-voltar:active,
+#atualiza-consulta:active,
+#listagemConsulta .btn-voltar:active{
+    background-color: rgb(11, 129, 184);
+}
+
 
 .mensagem-erro {
     border: 1px solid red;
@@ -129,3 +188,86 @@ button:hover {
     background-color: #203fca4a;
 }
 
+/* listagem consulta */
+
+#listagemConsulta {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Raleway', sans-serif;;
+    align-content: center;
+}
+#listagemConsulta .btn-voltar {
+    background-color: var(--azul);
+    width: 180px;
+    height: 60px;
+    border-radius: 0px;
+    border: none;
+    font-size: 30px;
+    margin: auto auto;
+    color: #505053;
+}
+
+#listagemConsulta .btn-voltar:active{
+    background-color: rgb(11, 129, 184);
+}
+
+#listagemConsulta #container-lista-consulta {
+    padding: 10px 50px;
+}
+#listagemConsulta #container-lista-consulta .unidadeListaCon {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.unidadeListaCon section {
+    padding: 5px 15px;
+}
+.cont-esq {
+    border-right: 1px solid rgb(185 185 185);
+    width: 100%;
+}
+.cont-dir {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+.unidadeListaCon .lcnomePaciente {
+    font-size: 30px;
+}
+
+.unidadeListaCon .lpnasc {
+    font-size: 20px;
+    color: rgb(51 51 51);
+}
+
+.unidadeListaCon .lcdescricao {
+    font-size: 23px;
+    color: rgb(51 51 51);
+}
+
+.unidadeListaCon .lcurgencia {
+    font-size: 23px;
+    color: rgb(51 51 51);
+}
+
+.unidadeListaCon .lcmedico {
+    font-size: 20px;
+    color: rgb(51 51 51);
+}
+
+.unidadeListaCon .lcdata{
+    font-size: 18px;
+    color: rgb(51 51 51);
+}
+
+.unidadeListaCon .lchora {
+    font-size: 18px;
+    color: rgb(51 51 51);
+}
+
+#listagemConsulta #container-lista-consulta .unidadeListaCon:hover {
+    cursor: pointer;
+}

@@ -26,7 +26,7 @@ public class ConsultaDAO implements IConsultaDAO{
     private final String user;
     
     public ConsultaDAO() {
-        url = "jdbc:mysql://localhost:3306/biositdb";
+        url = "jdbc:mysql://localhost:3306/biositdb?serverTimezone=America/Sao_Paulo";
         password = "";
         user = "root";
     }
@@ -43,8 +43,8 @@ public class ConsultaDAO implements IConsultaDAO{
             preparedStatement.setString(2, consulta.getDescricao());
             preparedStatement.setString(3, consulta.getUrgencia());
             preparedStatement.setString(4, consulta.getMedico());
-            preparedStatement.setString(4, consulta.getData());
-            preparedStatement.setString(4, consulta.getHorario());
+            preparedStatement.setString(5, consulta.getData());
+            preparedStatement.setString(6, consulta.getHorario());
             
             preparedStatement.executeUpdate();
             connection.close();
@@ -61,33 +61,33 @@ public class ConsultaDAO implements IConsultaDAO{
     
     @Override
     public boolean atualizar(Consulta consulta) throws CadastroException {
-        String query = "UPDATE consultas SET descricao = ?, urgencia = ?, medico = ?, data = ?, hora = ? WHERE nomePaciente = ?";
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(url, user, password);
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+    String query = "UPDATE consultas SET descricao = ?, urgencia = ?, medico = ?, data = ?, horario = ? WHERE nomePaciente = ?";
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection = DriverManager.getConnection(url, user, password);
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-            preparedStatement.setString(1, consulta.getNomePaciente());
-            preparedStatement.setString(2, consulta.getDescricao());
-            preparedStatement.setString(3, consulta.getUrgencia());
-            preparedStatement.setString(4, consulta.getMedico());
-            preparedStatement.setString(4, consulta.getData());
-            preparedStatement.setString(4, consulta.getHorario());
+        preparedStatement.setString(1, consulta.getDescricao());
+        preparedStatement.setString(2, consulta.getUrgencia());
+        preparedStatement.setString(3, consulta.getMedico());
+        preparedStatement.setString(4, consulta.getData());
+        preparedStatement.setString(5, consulta.getHorario());
+        preparedStatement.setString(6, consulta.getNomePaciente()); // Condição de atualização
 
-            preparedStatement.executeUpdate();
-            connection.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            throw new CadastroException(e.getMessage());
-        } catch (ClassNotFoundException e) {
-            throw new CadastroException(e.getMessage());
-        }
-        return true;
+        preparedStatement.executeUpdate();
+        connection.close();
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+        throw new CadastroException(e.getMessage());
+    } catch (ClassNotFoundException e) {
+        throw new CadastroException(e.getMessage());
     }
+    return true;
+}
     
     @Override
     public boolean deletar(String nomePaciente) throws Exception {
-        String query = "DELETE FROM consultas WHERE nomePaciente = ?";
+            String query = "DELETE FROM consultas WHERE nomePaciente = ?";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

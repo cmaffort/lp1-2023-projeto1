@@ -20,7 +20,8 @@
         </div>
         <div class="bloco" id="menu">
             <button id="mostrar-notificacoes"><img src="imgs/sino.png" id="sino"></button>
-            <button id="mostrar-menu">☰</button>
+            <button id="mostrar-menu"><img src="imgs/iconemenu.png" id="sino"></button>
+         
         </div>
     </header>
     <section id="opcoes" class="menu-escondido">

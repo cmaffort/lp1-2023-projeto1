@@ -11,26 +11,59 @@
       <title>Triagem</title>
       <link rel="stylesheet" href="estilos/mae.css">
       <style>
+         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+         
          .cadastro  {
-         margin-left: 450px;
-         margin-right: 450px;
+             
+         
+        
+         
+         
+         }
+         
+         .div-cadastro {
+             margin: 0 auto;
+             width:25%; /* Altere para o valor da largura desejada. */
+             box-shadow: 1px 1px 17px 1px #7a8383;
+             font-family: 'Raleway', sans-serif;
+             background-color: white;
+             padding: 20px;
+             margin-top: 70px;
+             margin-bottom: 70px;
+      
          }
          .cadastro h3 {
-         margin-left: 90px;
+         text-align: center;
          font-size: 30px;
          }
          .cadastro button {
-         width: 320px;}
+         width: 100%;}
          .cadastro form {
-         margin-left: 85px;
+ 
          }
          input {
-         width: 310px;}
+         width: 100%;
+         font-size: 22px;
+         border: none;
+         background-color: #d9d9d9;}
          textarea {
          resize: none;
-         }
+         border: none;
+         width: 100%;
+         background-color: #d9d9d9;
+         font-size: 22px;}
+         
+         
+         
          label {
          margin-bottom: 0; /* Remove a margem na parte inferior da label */
+         font-family: 'Raleway', sans-serif;
+         }
+         
+         .botaotriagem {
+             border: none;
+             background-color: var(--azul);
+             height: 50px;
          }
          .dropdown {
          position: relative;
@@ -67,13 +100,15 @@
          .dropdown:hover .dropdown-content {
          display: block;
          }
+         
+         
       </style>
    </head>
    <body>
       <%@include file="header.jsp" %>
       <div class="cinza" style="background-color: rgb(209, 209, 209);">
          <div class="cadastro" style="display: flex;">
-            <div class= "div-cadastro" style="flex: 1; padding: 20px; background-color: white; margin: 2%; align-items: center;">
+            <div class= "div-cadastro">
                <form action="Facade" method="GET" >
                   <h3>Triagem</h3>
                   <label id="paciente-triagem">Paciente:</label><br>
@@ -91,7 +126,7 @@
                   </div>
                   <br>
                   <br>
-                  <button type="button" id="confirmar">Confirmar</button>
+                  <button class="botaotriagem" type="submit" name="act" value="cadastrarTriagem">Confirmar</button>
                </form>
             </div>
          </div>
