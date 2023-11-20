@@ -11,10 +11,10 @@ public class ExibirConsulta {
     public static String execute(HttpServletRequest request) {
         String jsp = "/infoConsultas.jsp";
         try {
-            String nome = request.getParameter("nomeExibir");
+            String id = request.getParameter("idExibir");
 
             AgendarConsulta agendarConsulta = new AgendarConsulta();
-            Consulta consulta = agendarConsulta.pesquisar(nome);
+            Consulta consulta = agendarConsulta.pesquisar(id);
             
             request.setAttribute("consulta_exib", consulta);
         } catch(Exception e) {

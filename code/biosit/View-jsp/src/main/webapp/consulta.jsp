@@ -22,16 +22,15 @@
                     <label id="urgencia">Urgência:<br>
                         <input type="text" name="urgencia">
                     </label>
-                    <label id="nome-medico">Médico:<br>
-                        <input type="text" name="medico" maxlength="100">
-                    </label> 
                     <label id="data">Data:<br>
-                        <input type="text" name="data" maxlength="10">
+                        <input type="date" name="data" maxlength="10">
                     </label>
                     <label id="hora">Horário:<br>
                         <input type="text" name="horario" maxlength="10">
                     </label>
-                 
+                    <label id="nome-medico">Médico:<br>
+                        <input type="text" name="medico" maxlength="100">
+                    </label> 
                     <button id="enviaConsulta" type="submit" name="act" value="cadastrarConsulta">Agendar</button>
                     <%
                     String error2 = (String) request.getAttribute("error");

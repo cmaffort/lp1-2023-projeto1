@@ -48,11 +48,11 @@ public class AgendarConsulta implements IAgendarConsulta{
             throw new CadastroException("Cadastro Incompleto, insira um horário");
         }
 
-        if(consulta.getNomePaciente().length() > 50) {
-            throw new CadastroException("O nome não pode ter mais de 50 caracteres");
+        if(consulta.getNomePaciente().length() > 100) {
+            throw new CadastroException("O nome não pode ter mais de 100 caracteres");
         }
-        if(consulta.getMedico().length() > 50) {
-            throw new CadastroException("O nome não pode ter mais de 50 caracteres");
+        if(consulta.getMedico().length() > 100) {
+            throw new CadastroException("O nome não pode ter mais de 100 caracteres");
         }
         
         consultaDAO.inserir(consulta);
@@ -89,15 +89,15 @@ public class AgendarConsulta implements IAgendarConsulta{
     }
     
     @Override
-    public String excluir(String nomePaciente) throws Exception {
-        String id = "";
+    public String excluir(String id) throws Exception {
+        String id_ = "";
         
-        if(Util.verify(nomePaciente)) 
+        if(Util.verify(id)) 
             throw new CadastroException("Erro");
         
-        consultaDAO.deletar(nomePaciente);
+        consultaDAO.deletar(id);
         
-        return id;
+        return id_;
     }
     
     @Override
@@ -164,9 +164,9 @@ public class AgendarConsulta implements IAgendarConsulta{
         return consultas;
     }
     
-    public Consulta pesquisar(String nomePaciente) throws Exception {
+    public Consulta pesquisar(String id) throws Exception {
         Consulta consulta = null;
-        consulta = consultaDAO.pesquisarNomePaciente(nomePaciente);
+        consulta = consultaDAO.pesquisarId(id);
         
         return consulta;
     }

@@ -27,7 +27,7 @@
                         } else {
                             for (Consulta consulta: consultas) {
                 %> 
-                <article class="unidadeListaCon" onclick="window.location = '/biosit/Facade?act=exibirConsulta&nomeExibir=<%=consulta.getNomePaciente()%>'">
+                <article class="unidadeListaCon" onclick="window.location = '/biosit/Facade?act=exibirConsulta&idExibir=<%=consulta.getId()%>'">
                     <section class="cont-esq">
                         <div class="lcnomePaciente"><%=consulta.getNomePaciente()%></div>
                         <div class="lcdescricao"><%=consulta.getDescricao()%></div>

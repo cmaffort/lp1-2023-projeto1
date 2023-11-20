@@ -23,9 +23,9 @@ public class ExcluirConsulta {
         
         try {
             
-            String nome = request.getParameter("nomeExcluir");
+            String id = request.getParameter("idExcluir");
             AgendarConsulta agendarConsulta = new AgendarConsulta();
-            agendarConsulta.excluir(nome);
+            agendarConsulta.excluir(id);
             
         } catch(Exception e) {
             request.setAttribute("tperror", "excluirConsulta");

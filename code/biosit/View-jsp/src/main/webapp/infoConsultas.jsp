@@ -27,19 +27,19 @@
                             <label id="urgencia-att">Urgência:<br>
                                 <input type="text" name="urgencia" value='<%=consulta.getUrgencia()%>'>
                             </label>
-                            <label id="nome-medico-att">Médico:<br>
-                                <input type="text" name="medico" value='<%=consulta.getMedico()%>'>
-                            </label> 
                             <label id="data-att">Data:<br>
-                                <input type="text" name="data" value='<%=consulta.getData()%>'>
+                                <input type="date" name="data" value='<%=consulta.getData()%>'>
                             </label>
                             <label id="hora-att">Horário:<br>
                                 <input type="text" name="horario" value='<%=consulta.getHorario()%>'>
                             </label>
+                            <label id="nome-medico-att">Médico:<br>
+                                <input type="text" name="medico" value='<%=consulta.getMedico()%>'>
+                            </label> 
                     <section id="att-btn">
                         <a id="btn-voltar" onclick="location.href = 'index.jsp'">Voltar</a>
-                        <button id="atualiza-consulta" type="submit" name="act" value="atualizarConsulta">Atualizar</button>
-                        <a id="btn-delete" onclick="window.location='/biosit/Facade?act=excluirConsulta&nomeExcluir=<%=consulta.getNomePaciente()%>'">Excluir</a>
+                        <button id="atualiza-consulta" onclick="window.location='/biosit/Facade?act=atualizarConsulta&idAtualizar=<%=consulta.getId()%>'">Atualizar</button>
+                        <a id="btn-delete" onclick="window.location='/biosit/Facade?act=excluirConsulta&idExcluir=<%=consulta.getId()%>'">Excluir</a>
                     </section>
                     <%
                         }

@@ -61,18 +61,19 @@ public class ConsultaDAO implements IConsultaDAO{
     
     @Override
     public boolean atualizar(Consulta consulta) throws CadastroException {
-    String query = "UPDATE consultas SET descricao = ?, urgencia = ?, medico = ?, data = ?, horario = ? WHERE nomePaciente = ?";
+    String query = "UPDATE consultas SET nomePaciente = ?, descricao = ?, urgencia = ?, medico = ?, data = ?, horario = ? WHERE id = ?";
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection connection = DriverManager.getConnection(url, user, password);
         PreparedStatement preparedStatement = connection.prepareStatement(query);
-
-        preparedStatement.setString(1, consulta.getDescricao());
-        preparedStatement.setString(2, consulta.getUrgencia());
-        preparedStatement.setString(3, consulta.getMedico());
-        preparedStatement.setString(4, consulta.getData());
-        preparedStatement.setString(5, consulta.getHorario());
-        preparedStatement.setString(6, consulta.getNomePaciente()); // Condição de atualização
+        
+        preparedStatement.setString(1, consulta.getNomePaciente()); 
+        preparedStatement.setString(2, consulta.getDescricao());
+        preparedStatement.setString(3, consulta.getUrgencia());
+        preparedStatement.setString(4, consulta.getMedico());
+        preparedStatement.setString(5, consulta.getData());
+        preparedStatement.setString(6, consulta.getHorario());
+        
 
         preparedStatement.executeUpdate();
         connection.close();
@@ -86,15 +87,15 @@ public class ConsultaDAO implements IConsultaDAO{
 }
     
     @Override
-    public boolean deletar(String nomePaciente) throws Exception {
-            String query = "DELETE FROM consultas WHERE nomePaciente = ?";
+    public boolean deletar(String id) throws Exception {
+            String query = "DELETE FROM consultas WHERE id = ?";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, user, password);
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-            preparedStatement.setString(1, nomePaciente);
+            preparedStatement.setString(1, id);
 
             int r = preparedStatement.executeUpdate();
             if (!(r > 0)) {
@@ -169,6 +170,36 @@ public class ConsultaDAO implements IConsultaDAO{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, nome);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            if (resultSet.next()) {
+                String nomePaciente = resultSet.getString("nomePaciente");
+                String descricao = resultSet.getString("descricao");
+                String urgencia = resultSet.getString("urgencia");
+                String medico = resultSet.getString("medico");
+                String data = resultSet.getString("data");
+                String horario = resultSet.getString("horario");
+                consulta = new Consulta(nomePaciente, descricao, urgencia, medico, data, horario);
+            }
+            
+            connection.close();
+        } catch (SQLException e) {
+            throw new Exception(e.getMessage());
+        }
+        return consulta;
+    }
+    
+    @Override
+    public Consulta pesquisarId(String id) throws Exception {
+        String query = "SELECT * FROM consultas WHERE id = ?";
+        Consulta consulta = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(url, user, password);
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setString(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             
             if (resultSet.next()) {

@@ -5,6 +5,7 @@ package br.cefetmg.biosit.dto;
  * @author pjusti19
  */
 public class Consulta {
+    private String id;
     private String nomePaciente;
     private String descricao;
     private String urgencia;
@@ -69,6 +70,13 @@ public class Consulta {
         this.horario = horario;
     }   
     
+    public String getId(){
+        return id;
+    }
+    
+    public void setId(String id) {
+        this.id = id;
+    }  
 }
 
      

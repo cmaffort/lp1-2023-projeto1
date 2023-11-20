@@ -15,6 +15,7 @@ public interface IConsultaDAO {
     boolean deletar(String nomePaciente) throws Exception;
     List<Consulta> pesquisarListaNomePaciente (String nomePaciente) throws Exception;
     Consulta pesquisarNomePaciente (String nome) throws Exception;
+    Consulta pesquisarId (String id) throws Exception;
     List<Consulta> pesquisarData(String data) throws Exception;
     List<Consulta> pesquisarHorario(String horario) throws Exception;
     List<Consulta> pesquisarListaNomeMedico(String medico) throws Exception;

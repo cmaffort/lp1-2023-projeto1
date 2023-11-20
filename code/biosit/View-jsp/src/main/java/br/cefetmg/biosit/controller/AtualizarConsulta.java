@@ -16,6 +16,7 @@ public class AtualizarConsulta {
     public static String execute(HttpServletRequest request) {
         String jsp = "/infoConsultas.jsp";
         try {
+            String id = request.getParameter("idAtualizar");
             String nomePaciente = request.getParameter("nomePaciente");
             String descricao = request.getParameter("descricao");
             String urgencia = request.getParameter("urgencia");
@@ -23,6 +24,7 @@ public class AtualizarConsulta {
             String data = request.getParameter("data");
             String horario = request.getParameter("horario");
             Consulta consulta = new Consulta(nomePaciente, descricao, urgencia, medico, data, horario);
+            consulta.setId(id);
             System.out.println(consulta);
             AgendarConsulta agendarConsulta = new AgendarConsulta();
             agendarConsulta.atualizar(consulta);
