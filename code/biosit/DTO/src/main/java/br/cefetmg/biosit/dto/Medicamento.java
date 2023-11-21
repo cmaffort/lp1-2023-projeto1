@@ -54,7 +54,14 @@ import java.util.Date;
     }
         
     public Medicamento (String nome, String data, int quant, String fornecedora, int lote) {
-
+        this.nome = nome;
+        this.dataValidade = data;
+        this.quantRestante = quant;
+        this.fornecedora = fornecedora;
+        this.lote = lote;
+    }
+    public Medicamento(){
+        
     }
 
     

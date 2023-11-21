@@ -30,7 +30,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
     
     @Override
     public boolean inserir(Medicamento medicamento) throws CadastroException {
-        String query = "INSERT INTO medicamentos (nome, data, quantidade, fornecedora, lote) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO medicamento (nome, validade, quantidade, fornecedora, lote) VALUES (?, ?, ?, ?, ?)";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
@@ -55,7 +55,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
 
     @Override
     public boolean atualizar(Medicamento medicamento) throws CadastroException {
-        String query = "UPDATE medicamento SET nome = ?, data = ?, fornecedora = ?, lote = ?, WHERE quantidade = ?";
+        String query = "UPDATE medicamento SET nome = ?, validade = ?, fornecedora = ?, lote = ?, WHERE quantidade = ?";
         try (Connection connection = DriverManager.getConnection(url, user, password);
             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
@@ -75,7 +75,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
 
     @Override
     public boolean deletar(Medicamento medicamento) throws Exception {
-        String query = "DELETE FROM medicamento WHERE nome = ?, data = ?,  quantidade = ?, fornecedora = ?, lote = ?";
+        String query = "DELETE FROM medicamento WHERE nome = ?, validade = ?,  quantidade = ?, fornecedora = ?, lote = ?";
 
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
@@ -101,7 +101,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
     
     @Override
     public List<Medicamento> pesquisarNome(String nome) throws Exception {
-        String query = "SELECT * FROM equipamento WHERE nome = ?";
+        String query = "SELECT * FROM medicamento WHERE nome = ?";
         List<Medicamento> medicamentos = new ArrayList<>();
         
         try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -142,7 +142,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
     }
     @Override
     public List<Medicamento> pesquisarFornecedora(String fornecedora) throws Exception {
-        String query = "SELECT * FROM equipamento WHERE fornecedora = ?";
+        String query = "SELECT * FROM medicamento WHERE fornecedora = ?";
         List<Medicamento> medicamentos = new ArrayList<>();
         
         try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -162,7 +162,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
         return medicamentos;
     }
     public List<Medicamento> pesquisarValidade(String validade) throws Exception {
-        String query = "SELECT * FROM medicamento WHERE data = ?";
+        String query = "SELECT * FROM medicamento WHERE validade = ?";
         List<Medicamento> medicamentos = new ArrayList<>();
         
         try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -183,7 +183,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
     }
     
     public List<Medicamento> pesquisarLote(int lote) throws Exception {
-        String query = "SELECT * FROM equipamento WHERE lote = ?";
+        String query = "SELECT * FROM medicamento WHERE lote = ?";
         List<Medicamento> medicamentos = new ArrayList<>();
         
         try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -204,7 +204,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
     }
     
     public List<Medicamento> pesquisarTodos() throws Exception {
-        String query = "SELECT * FROM medicamentos";
+        String query = "SELECT * FROM medicamento";
         List<Medicamento> medicamentos = new ArrayList<>();
         
         try {

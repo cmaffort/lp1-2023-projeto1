@@ -25,15 +25,15 @@ public class BuscarMedicamento {
             String nome = request.getParameter("nome");
             String fornecedora = request.getParameter("fornecedora");
             String dataValidade = request.getParameter("dataValidade");           
-            int lote = Integer.parseInt("lote");
-            int quantidadeRestante = Integer.parseInt("quantidade");
+            int lote = Integer.parseInt(request.getParameter("lote"));
+            int quantidadeRestante = Integer.parseInt(request.getParameter("quantidade"));
             
             Medicamento medicamento = new Medicamento(nome, dataValidade, quantidadeRestante, fornecedora, lote);
             
             ICadastrarMedicamento manterMedicamento = new ManterMedicamento();
             
             medicamentos = manterMedicamento.pesquisar(medicamento);
-            request.setAttribute("equipamentos", medicamentos);
+            request.setAttribute("medicamentos", medicamentos);
             
         } catch(Exception e) {
             request.setAttribute("tperror", "pesquisaMedicamento");

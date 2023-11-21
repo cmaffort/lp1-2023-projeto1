@@ -178,55 +178,70 @@ main {
 }
 
 /* prontuario */
-#container-form-prontuario {
+#container-form-prontuario,
+#container-editar-registro{
     display: flex;
     flex-direction: column;
     padding: 0px 15px;
 }
-#form-prontuario {
+#form-prontuario,
+#form-prontuario-edit{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     font-family: var(--fonte-principal);
     justify-content: space-between;
 }
-#title-pron {
+#title-pron,
+#title-pron-edit {
     width: 70%;
 }
-#title-pron input {
+#title-pron input,
+#title-pron-edit input {
     width: 90%;
 }
-#categoria-pron {
+#categoria-pron,
+#categoria-pron-edit {
     width: 25%;
 }
-#categoria-pron select {
+#categoria-pron select,
+#categoria-pron-edit select{
     width: 100%;
 }
-#desc-pron {
+#desc-pron,
+#desc-pron-edit {
     margin-top: 15px;
     width: 100%;
 }
-#desc-pron textarea {
+#desc-pron textarea,
+#desc-pron-edit textarea {
     width: 100%;
     resize: none;
     height: 18vh;
 }
 #title-pron input,
 #categoria-pron select,
-#desc-pron textarea {
+#desc-pron textarea,
+#title-pron-edit input,
+#categoria-pron-edit select,
+#desc-pron-edit textarea{
     background-color: var(--cinza);
     border: none;
 }
 #title-pron input,
-#categoria-pron select {
+#categoria-pron select,
+#title-pron-edit input,
+#categoria-pron-edit select{
     height: 30px;
 }
-#cont-btn-pron-registrar {
+#cont-btn-pron-registrar,
+#cont-btn-pron-registrar-edit{
     display: flex;
     flex-direction: row;
     justify-content: end;
 }
-#cont-btn-pron-registrar button {
+#cont-btn-pron-registrar button,
+#cont-btn-pron-registrar-edit button {
     padding: 5px;
     font-size: 22px;
     font-family: var(--fonte-principal);
@@ -255,4 +270,53 @@ main {
 }
 .reg-exib-desc {
     width: 100%;
+    padding: 10px 10px;
+}
+#display-registros {
+    border-top:1px solid var(--cinza);
+    margin: 0px 45px;
+}
+#notfound {
+    margin: 10px;
+}
+.container-btn-reg {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 10px;
+}
+.btn-reg {
+    background-color: var(--azul);
+    font-size: 20px;
+    padding: 2px 10px;
+}
+.btn-reg:hover {
+    cursor: pointer;
+}
+#container-editar-registro {
+    position: fixed;
+    width: 60vw;
+    height: 50vh;
+    top: 25vh;
+    left: 20vw;
+    background-color: white;
+}
+#container-editar-registro.editar-off {
+    display: none;
+}
+#containerwt.display-total-off {
+    opacity: 0.5;
+}
+#form-editar-reg {
+    background-color: white;
+}
+#fechar-edicao {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: var(--azul);
+}
+#fechar-edicao:hover {
+    cursor: pointer;
 }

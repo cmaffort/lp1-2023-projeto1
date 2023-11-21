@@ -33,7 +33,7 @@ public class AtualizarPaciente {
             paciente.setTel(tel);
             System.out.println(paciente);
             ManterPaciente manterPaciente = new ManterPaciente();
-            manterPaciente.atualizar(paciente);
+            paciente = manterPaciente.atualizar(paciente);
             
             request.setAttribute("paciente_exib", paciente);
             request.setAttribute("sucess", "Dados atualizados com sucesso");

@@ -1,0 +1,45 @@
+.secao {
+    background-color: white;
+    width: 50vw;
+    box-shadow: 1px 1px 17px 1px #7a8383;
+}
+
+main#login {
+    height: 62vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main#login section {
+    padding: 15px;
+}
+
+#login .secao form button {
+    width: 100%;
+}
+
+#login .secao form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#login .secao form button,
+#login .secao form input {
+    border-radius: 0px;
+    border: none;
+}
+
+#login .secao form label {
+    margin: 2vh 0px;
+}
+
+#login .secao form input {
+    background-color: var(--cinza);
+    height: 70%;
+}
+

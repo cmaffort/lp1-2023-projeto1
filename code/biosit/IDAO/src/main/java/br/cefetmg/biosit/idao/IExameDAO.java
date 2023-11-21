@@ -12,9 +12,10 @@ import br.cefetmg.biosit.dto.exception.CadastroException;
 public interface IExameDAO {
     boolean inserir(Exame exame) throws CadastroException;
     boolean atualizar(Exame exame) throws Exception;
-    boolean deletar(Exame exame) throws Exception;
+    boolean deletar(String dataHora) throws Exception;
     List<Exame> pesquisarExame(String exame) throws Exception;
-    List<Exame> pesquisarPaciente(int CPFpaciente) throws Exception;
+    Exame pesquisarPaciente(String CPFpaciente) throws Exception;
     List<Exame> pesquisarDataHora(String dataHora) throws Exception;
+    List<Exame> pesquisarTodos() throws Exception;
 
 } 

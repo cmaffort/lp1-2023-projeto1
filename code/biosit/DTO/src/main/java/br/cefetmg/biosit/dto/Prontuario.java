@@ -10,17 +10,25 @@ import java.util.ArrayList;
 public class Prontuario {
     private ArrayList<RegistroProntuario> registros;
     private String cpf;
-    Paciente paciente;
 //    private Consultas[] consultas;
     
-    public Prontuario(Paciente pac) {
-        this.paciente = pac;
-        this.cpf = pac.getCPF();
+    public Prontuario() {
         registros = new ArrayList<>();
+    }
+
+    public ArrayList<RegistroProntuario> getRegistros() {
+        return registros;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
     
     public void addRegistro(RegistroProntuario reg) {
-        reg.setID(registros.size());
         registros.add(reg);
     }
     

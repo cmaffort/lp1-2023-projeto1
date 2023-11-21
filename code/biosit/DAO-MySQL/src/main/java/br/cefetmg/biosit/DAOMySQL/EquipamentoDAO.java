@@ -29,7 +29,7 @@ public class EquipamentoDAO implements IEquipamentoDAO {
 
     @Override
     public boolean inserir(Equipamento equipamento) throws CadastroException {
-        String query = "INSERT INTO equipamentos (nome, data, quantidade, fornecedora, setor) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO equipamento (nome, data, quantidade, fornecedora, setor) VALUES (?, ?, ?, ?, ?)";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -199,7 +199,7 @@ public class EquipamentoDAO implements IEquipamentoDAO {
         return equipamentos;
     }
     public List<Equipamento> pesquisarTodos() throws Exception {
-        String query = "SELECT * FROM equipamentos";
+        String query = "SELECT * FROM equipamento";
         List<Equipamento> equipamentos = new ArrayList<>();
         
         try {

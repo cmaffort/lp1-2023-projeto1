@@ -8,10 +8,9 @@ import java.util.List;
 
 public interface IRequisitarExame {
     
-    public String cadastrar(Exame exame) throws CadastroException;
+    public String cadastrar(Exame exame) throws CadastroException, ExameDuplicadoException;
     public String atualizar(Exame exame) throws Exception;
-    public String excluir(Exame exame) throws Exception;
-    
+    public String excluir(String dataHora) throws Exception;
     public List<Exame> pesquisar(Exame exame) throws Exception;
     
 } 

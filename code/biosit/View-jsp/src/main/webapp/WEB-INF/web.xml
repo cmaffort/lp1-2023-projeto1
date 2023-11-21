@@ -21,4 +21,15 @@
             30
         </session-timeout>
     </session-config>
+    <filter>
+        <filter-name>FilterAutenticacao</filter-name>
+        <filter-class>br.cefetmg.biosit.controller.FilterAutenticacao</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterAutenticacao</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

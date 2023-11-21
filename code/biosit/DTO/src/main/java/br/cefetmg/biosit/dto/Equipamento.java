@@ -4,15 +4,16 @@ package br.cefetmg.biosit.dto;
  *
  * @author aluno
  */
-
 import java.util.Date;
-    public class Equipamento  {
-        private String fornecedora;
-        private String nome;
-        private String data;
-        private String setor;
-        private int quant;
-       
+
+public class Equipamento {
+
+    private String fornecedora;
+    private String nome;
+    private String data;
+    private String setor;
+    private int quant;
+
     public String getNome() {
         return nome;
     }
@@ -52,11 +53,13 @@ import java.util.Date;
     public void setQuant(int quant) {
         this.quant = quant;
     }
-        
-        public Equipamento (String nome, String data,int quant, String fornecedora, String setor) {
 
-        }
+    public Equipamento(String nome, String data, int quant, String fornecedora, String setor) {
+        this.nome = nome;
+        this.data = data;
+        this.quant = quant;
+        this.fornecedora = fornecedora;
+        this.setor = setor;
+    }
 
-    
 }
-

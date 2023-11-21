@@ -14,13 +14,16 @@
         <link rel="stylesheet" href="estilos/paciente.css">
         <link rel="stylesheet" href="estilos/prontuario.css">
         <%@ page import="br.cefetmg.biosit.dto.Paciente" %>
+        <%@ page import="br.cefetmg.biosit.dto.Prontuario" %>
+        <%@ page import="br.cefetmg.biosit.dto.RegistroProntuario" %>
         <%@ page import="java.util.ArrayList" %>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <%@include file="header.jsp" %>
         <main id="pron">
-            <section id="containerwt">
-            <form id="frm" action="Facade" method="GET">
+            <section id="containerwt" class="">
+            <form id="frm" action="Facade" method="POST">
                 <section id="att-dados">
                     <section id="menu-att-paciente">
                         <div id="sec-geral" class="btn-secao selected">Dados Gerais</div>
@@ -61,31 +64,50 @@
                         <section id="container-form-prontuario">
                             <article id="form-prontuario">
                                 <label id="title-pron">Título<br>
-                                    <input type="text">
+                                    <input type="text" name="titulo-reg">
                                 </label>
                                 <label id="categoria-pron">Categoria<br>
-                                    <select>
-                                        <option value="alergia">Alergia</option>
-                                        <option value="diagnostico">Diagnóstico</option>
-                                        <option value="observacao">Observação</option>
-                                        <option value="registro" selected>Registro</option>
+                                    <select name="tipo-reg">
+                                        <option value="Alergia">Alergia</option>
+                                        <option value="Diagnostico">Diagnóstico</option>
+                                        <option value="Observacao">Observação</option>
+                                        <option value="Registro" selected>Registro</option>
                                     </select>
                                 </label>
                                 <label id="desc-pron">Descrição<br>
-                                    <textarea></textarea>
+                                    <textarea name="desc-reg"></textarea>
                                 </label>
                             </article>
                             <article id="cont-btn-pron-registrar">
-                                <button>Registrar</button>
+                                <button type="submit" name="act" value="AdicionaRegistroProntuario">Registrar</button>
                             </article>
                         </section>
-                        <section>
-                            <article class="reg-exib-art">
-                                <div class="reg-exib-title">Registro foda</div>
-                                <div class="reg-exib-data"> 07/11/2023 11:31</div>
-                                <div class="reg-exib-tipo"> Registro</div>
-                                <div class="reg-exib-desc">ah mas n sei oq la nao sei oq la</div>
-                            </article>
+                        <section id="display-registros">
+                            <%
+                                ArrayList<RegistroProntuario> registros = paciente.getProntuario().listRegistros();
+                                if(registros.size() == 0) {
+                            %>
+                                <div class="notfound">Nenhum registro encontrado.</div>
+                            <%
+                                    } else {
+                                        for (RegistroProntuario reg: registros) {
+                            %>
+                                <article class="reg-exib-art">
+                                    <div class="reg-exib-title"><%=reg.getTitulo()%></div>
+                                    <div class="reg-exib-tipo"><%=reg.getTipo()%></div>
+                                    <div class="reg-exib-data"><%=reg.getData()%></div>
+                                    <div class="reg-exib-desc"><%=reg.getDescricao()%></div>
+                                    <div class="container-btn-reg">
+                                        <a data-id="<%=reg.getID()%>" class="btn-edit-reg btn-reg"
+                                           data-titulo="<%=reg.getTitulo()%>"
+                                           data-descricao="<%=reg.getDescricao()%>">
+                                            Editar
+                                        </a>
+                                        <a class="btn-excluir-reg btn-reg"
+                                           onclick="window.location='/biosit/Facade?act=excluirRegistro&cpf=<%=paciente.getCPF()%>&id=<%=reg.getID()%>'">Excluir</a>
+                                    </div>
+                                </article>
+                            <%   }} %>
                         </section>
                     </section>
                     <section class="secao-sel secao-oculta">
@@ -122,6 +144,32 @@
                         } }
                     %>
             </form>
+            </section>
+            <section id="container-editar-registro" class="editar-off">
+                <i id="fechar-edicao" class="fa fa-times" aria-hidden="true"></i>
+                <form id="form-editar-reg">
+                    <input id="id-reg-edit" type="hidden" name="id" value="">
+                    <input type="hidden" name="cpf" value="<%=paciente.getCPF()%>">
+                    <article id="form-prontuario-edit">
+                        <label id="title-pron-edit">Título<br>
+                            <input type="text" name="titulo-reg">
+                        </label>
+                        <label id="categoria-pron-edit">Categoria<br>
+                            <select name="tipo-reg">
+                                <option value="alergia">Alergia</option>
+                                <option value="diagnostico">Diagnóstico</option>
+                                <option value="observacao">Observação</option>
+                                <option value="registro" selected>Registro</option>
+                            </select>
+                        </label>
+                        <label id="desc-pron-edit">Descrição<br>
+                            <textarea name="desc-reg"></textarea>
+                        </label>
+                    </article>
+                    <article id="cont-btn-pron-registrar-edit">
+                        <button type="submit" name="act" value="EditarRegistroProntuario">Atualizar</button>
+                    </article>
+                </form>
             </section>
         </main>
         <script src="scripts/prontuario.js"></script>

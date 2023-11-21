@@ -3,7 +3,7 @@ package br.cefetmg.biosit.dto;
 
 public class Exame {
     private String exame;
-    private int CPFpaciente;
+    private String CPFpaciente;
     private String dataHora;
     
     public String getExame() {
@@ -13,11 +13,11 @@ public class Exame {
     public void setExame(String exame) {
         this.exame = exame;
     }
-    public int getPaciente() {
+    public String getPaciente() {
         return CPFpaciente;
     }
 
-    public void setPaciente(int CPFpaciente) {
+    public void setPaciente(String CPFpaciente) {
         this.CPFpaciente = CPFpaciente;
     }
     public String getDataHora() {

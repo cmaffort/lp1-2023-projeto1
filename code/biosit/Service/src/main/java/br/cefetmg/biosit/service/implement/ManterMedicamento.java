@@ -18,6 +18,11 @@ import br.cefetmg.biosit.idao.IMedicamentoDAO;
  * @author Aluno
  */
 public class ManterMedicamento implements ICadastrarMedicamento {
+    
+    public ManterMedicamento() {
+        this.medicamentoDAO = new MedicamentoDAO();
+    }
+    
     private IMedicamentoDAO medicamentoDAO;
    
     @Override

@@ -11,8 +11,8 @@ import java.util.Date;
  * @author Pedro Gabriel
  */
 public interface IProntuarioDAO {
-    boolean inserir(Prontuario prontuario) throws CadastroException;
-    boolean atualizar(Prontuario prontuario) throws Exception;
-    boolean deletar(String cpf) throws Exception;
-    Prontuario pesquisarCPF(String cpf) throws Exception;
+    boolean inserir(RegistroProntuario registro) throws Exception;
+    boolean atualizar(RegistroProntuario registro) throws Exception;
+    boolean deletar(int id) throws Exception;
+    Prontuario pesquisar(String cpf) throws Exception;
 }

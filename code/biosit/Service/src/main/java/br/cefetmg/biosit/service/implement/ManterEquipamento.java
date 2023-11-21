@@ -19,6 +19,9 @@ import br.cefetmg.biosit.idao.IEquipamentoDAO;
 public class ManterEquipamento implements ICadastrarEquipamento {
     private IEquipamentoDAO equipamentoDAO;
    
+    public ManterEquipamento() {
+        this.equipamentoDAO = new EquipamentoDAO();
+    }
    @Override  
     public String cadastrar(Equipamento equipamento) throws CadastroException {
         

@@ -29,8 +29,6 @@ public class CadastrarEquipamento extends HttpServlet {
             int quantidade = Integer.parseInt(request.getParameter("quantidade"));
             
             Equipamento equipamento = new Equipamento(nome, data, quantidade, fornecedora, setor);
-            //CadastrarEquipamento cad = new CadastrarEquipamento();
-            //cad.cadastrar(equipamento);
             ICadastrarEquipamento manterEquipamento = new ManterEquipamento();
             manterEquipamento.cadastrar(equipamento);
             

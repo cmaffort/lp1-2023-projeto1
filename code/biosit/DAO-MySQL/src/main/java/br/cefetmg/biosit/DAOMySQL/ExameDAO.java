@@ -33,7 +33,7 @@ public class ExameDAO implements IExameDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, exame.getExame());
-            preparedStatement.setInt(2, exame.getPaciente());
+            preparedStatement.setString(2, exame.getPaciente());
             preparedStatement.setString(3, exame.getDataHora());
 
             preparedStatement.executeUpdate();
@@ -52,7 +52,7 @@ public class ExameDAO implements IExameDAO {
         try (Connection connection = DriverManager.getConnection(url, user, password); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setString(1, exame.getExame());
-            preparedStatement.setInt(2, exame.getPaciente());
+            preparedStatement.setString(2, exame.getPaciente());
             preparedStatement.setString(3, exame.getDataHora());
 
             preparedStatement.executeUpdate();
@@ -63,22 +63,20 @@ public class ExameDAO implements IExameDAO {
         return true;
     }
 
-    @Override
-    public boolean deletar(Exame exame) throws Exception {
-        String query = "DELETE FROM exame WHERE exame = ?, paciente = ?,  dataHora = ?";
+   
+    public boolean deletar(String dataHora) throws Exception {
+        String query = "DELETE FROM exames WHERE dataHora = ?";
 
         try {
-            
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, user, password);
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            
-            preparedStatement.setString(1, exame.getExame());
-            preparedStatement.setInt(2, exame.getPaciente());
-            preparedStatement.setString(3, exame.getDataHora());
+
+            preparedStatement.setString(1, dataHora);
 
             int r = preparedStatement.executeUpdate();
             if (!(r > 0)) {
-                throw new Exception("Erro. Nenhum exame agendado encontrado");
+                throw new Exception("Erro. Nenhum exame encontrado");
             }
             connection.close();
         } catch (SQLException e) {
@@ -108,24 +106,29 @@ public class ExameDAO implements IExameDAO {
         return exames;
     }
 
-    public List<Exame> pesquisarPaciente(int CPFpaciente) throws Exception {
-        String query = "SELECT * FROM exame WHERE paciente = ?";
-        List<Exame> exames = new ArrayList<>();
+    public Exame pesquisarPaciente(String CPFpaciente) throws Exception {
+        String query = "SELECT * FROM pacientes WHERE cpf = ?";
+        Exame exame = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(url, user, password);
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-        try (Connection connection = DriverManager.getConnection(url, user, password); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
-            preparedStatement.setInt(2, CPFpaciente);
+            preparedStatement.setString(1, CPFpaciente);
             ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                Exame exame = new Exame(resultSet.getString("nomeExame"),resultSet.getString("paciente"), resultSet.getString("dataHora"));
-                exames.add(exame);
+            
+            if (resultSet.next()) {
+                String NomeExame = resultSet.getString("nome");
+                String dataHora = resultSet.getString("dataHora");
+                exame = new Exame(NomeExame, CPFpaciente, dataHora);
             }
+            
             connection.close();
         } catch (SQLException e) {
-            throw new Exception("Erro ao deletar o exame: " + e.getMessage());
+            throw new Exception(e.getMessage());
         }
-        return exames;
+        return exame;
     }
 
     @Override
@@ -149,6 +152,7 @@ public class ExameDAO implements IExameDAO {
         return exames;
     }
 
+    @Override
     public List<Exame> pesquisarTodos() throws Exception {
         String query = "SELECT * FROM exames";
         List<Exame> exames = new ArrayList<>();
@@ -173,5 +177,28 @@ public class ExameDAO implements IExameDAO {
         return exames;
     }
 
+    public List<Exame> obterExamesParaSelect(String dataHora, String nome, String cpf, String dataNascimento, String endereco) throws Exception {
+        String query = "SELECT * FROM exames WHERE dataHora = ? AND nome = ? AND cpf = ? AND dataNascimento = ? AND endereco = ?";
+        List<Exame> exames = new ArrayList<>();
 
-}
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, dataHora);
+            preparedStatement.setString(2, nome);
+            preparedStatement.setString(3, cpf);
+            preparedStatement.setString(4, dataNascimento);
+            preparedStatement.setString(5, endereco);
+          
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Exame exame = new Exame(resultSet.getString("nomeExame"), resultSet.getString("paciente"), resultSet.getString("dataHora"));
+                exames.add(exame);
+            }
+            connection.close();
+        } catch (SQLException e) {
+            throw new Exception("Erro ao obter exames: " + e.getMessage());
+        }
+        return exames;
+    }

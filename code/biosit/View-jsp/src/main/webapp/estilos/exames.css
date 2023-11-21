@@ -1,2 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
 
+:root {
+    --azul: rgb(44, 182, 248);
+    --cinza: rgb(221 218 218);
+    --fonte-principal: 'Raleway', sans-serif;
+}
+
+main#exame {
+    height: 62vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 70px;
+}
+
+main#exame section {
+    padding: 15px;
+}
+#exame input {
+    box-sizing: border-box;
+}
+#exame .cadastro {
+    background-color: white;
+    width: 30vw;
+    box-shadow: 1px 1px 17px 1px #7a8383;
+}
+#exame .buscar {
+    width: 30vw;
+}
+#exame .cadastro h3,
+#exame .buscar h3{
+    text-align: center;
+    font-size: 40px;
+}
+#exame .cadastro form,
+#exame .buscar form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#nome-cadastro, #nome-buscar {
+    width: 100%;
+}
+#nome-cadastro input, #nome-buscar input {
+    width: 100%;
+}
+
+#tipo-exame, #tipo-exame {
+    width: 45%;
+}
+#tipo-exame input, #tipo-exame input {
+    width: 100%;
+}
+
+#data-hora, #data-hora {
+    width: 45%;
+}
+#data-hora input, #data-hora input {
+    width: 100%;
+}
+
+#exame .cadastro h3, #exame .buscar h3 {
+    width: 100%;
+}
+
+#exame .cadastro form button, #exame .buscar form button {
+    background-color: var(--azul);
+    width: 100%;
+    padding: 20px auto;
+}
+#exame .cadastro form input {
+    background-color: var(--cinza);
+    height: 70%;
+}
+#exame .buscar form input {
+    height: 70%;
+}
+#exame .cadastro, #exame .buscar {
+    font-family: 'Raleway', sans-serif;;
+}
+#exame .cadastro form input,
+#exame .cadastro form button,
+#exame .buscar form input,
+#exame .buscar form button{
+    border-radius: 0px;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#exame .cadastro form h3,
+#exame .cadastro form label,
+#exame .cadastro form input,
+#exame .cadastro form button {
+}
+#exame .cadastro form label,
+#exame .buscar form label{
+    margin: 1vh 0px;
+}
+#exame .cadastro form label,
+#exame .cadastro form button,
+#exame .buscar form label,
+#exame .buscar form button{
+    color: #505053;
+}
+#exame .cadastro form button,
+#exame .buscar form button{
+    height: 60px;
+    margin: 2vh auto;
+}
 

@@ -16,19 +16,14 @@ import java.util.List;
 
 public class ExibirMedicamento {
     public static String execute(HttpServletRequest request) {
-        String jsp = "/medicamento.jsp";
+        String jsp = "/listagemMedicamento.jsp";
         try {
-            String nome = request.getParameter("nome");
-            String fornecedora = request.getParameter("fornecedora");
-            String dataValidade = request.getParameter("dataValidade");           
-            int lote = Integer.parseInt("lote");
-            int quantidadeRestante = Integer.parseInt("quantidade");
-            
-            Medicamento medicamento = new Medicamento(nome, dataValidade, quantidadeRestante, fornecedora, lote);
-            
+            String nome = request.getParameter("nomeExibir");
 
-            ManterMedicamento ManterMedicamento = new ManterMedicamento();
-            ManterMedicamento.pesquisar(medicamento);
+            ManterMedicamento manterMedicamento = new ManterMedicamento();
+            Medicamento medicamentoteste = new Medicamento();
+            medicamentoteste.setNome(nome);
+            List<Medicamento> medicamento = manterMedicamento.pesquisar(medicamentoteste);
             
             request.setAttribute("medicamento_exib", medicamento);
         } catch(Exception e) {

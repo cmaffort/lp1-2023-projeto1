@@ -46,6 +46,9 @@ public class Paciente {
     public String getTel() {
         return tel;
     }
+    public Prontuario getProntuario() {
+        return prontuario;
+    }
     
     public void setNome(String nome) {
         this.nome = nome;
@@ -64,6 +67,9 @@ public class Paciente {
     }
     public void setTel(String tel) {
         this.tel = tel;
+    }
+    public void setProntuario(Prontuario pron) {
+        this.prontuario = pron;
     }
     
     public boolean equals(Paciente paciente) {

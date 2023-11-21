@@ -14,7 +14,7 @@ import java.util.List;
 public interface IManterPaciente {
     
     public String cadastrar(Paciente paciente) throws CadastroException, PacienteDuplicadoException;
-    public String atualizar(Paciente paciente) throws Exception;
+    public Paciente atualizar(Paciente paciente) throws Exception;
     public String excluir(String cpf) throws Exception;
     
     public List<Paciente> pesquisar(Paciente paciente) throws Exception;
