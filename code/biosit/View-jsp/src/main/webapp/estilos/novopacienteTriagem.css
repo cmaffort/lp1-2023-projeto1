@@ -10,13 +10,14 @@
          
          .div-cadastro  {
              margin: 0 auto;
-             width:25%; /* Altere para o valor da largura desejada. */
+             width:40%; /* Altere para o valor da largura desejada. */
              box-shadow: 1px 1px 17px 1px #7a8383;
              font-family: 'Raleway', sans-serif;
              background-color: white;
              padding: 20px;
-             margin-top: 70px;
+             
              margin-bottom: 70px;
+             font-size:2px;
       
          }
          
@@ -26,17 +27,30 @@
     justify-content: space-around;
     align-items: center;
              margin: 0 auto;
-             width:50%; /* Altere para o valor da largura desejada. */
+             width:80%; /* Altere para o valor da largura desejada. */
              box-shadow: 1px 1px 17px 1px #7a8383;
              font-family: 'Raleway', sans-serif;
              background-color: white;
              padding: 20px;
-             margin-top: 10px;
+             margin-top: 3px;
              margin-bottom: 10px;
+             align-content: center;
              
          }
+         .select-invalido {
+             border: 2px solid #FF0000;
+             
+             background-color: #d9d9d9; 
+             height: 60%;
+             
+         }
+         select {
+             border: none;
+             background-color: #d9d9d9; 
+             height: 60%;
+         }
          h3 {
-         text-align: center;
+         
          font-size: 30px;
          width: 100%;
          }
@@ -51,6 +65,13 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-start;
+             
+         }
+         
+         .input-invalido {
+             border: 2px solid #FF0000;
+             font-size: 22px;
+             background-color: #d9d9d9;
              
          }
          
@@ -90,6 +111,7 @@
              border: none;
              background-color: var(--azul);
              height: 50px;
+             width: 100%;
          }
          
          .dropdown {
@@ -128,6 +150,28 @@
          display: block;
          }
          
-         label {
+         #labelataamo {
              margin: 1%;
+             display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+             
+         }
+         
+         label {
+         margin: 1%;
+         }
+         
+         #urgenciaa {
+             color: white;
+             border-width: 6px;
+             border-style: solid;
+             background-color: red;
+             border-color: red;
+             border-radius: 10px;
+         }
+         
+         #socorrodeus {
+             padding-top: 5px;
          }

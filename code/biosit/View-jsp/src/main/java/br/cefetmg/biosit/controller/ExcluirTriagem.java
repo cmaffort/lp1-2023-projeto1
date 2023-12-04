@@ -15,16 +15,18 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.sql.SQLException;
 
 /**
  *
  * @author joaop
  */
-@WebServlet(name = "CadastrarTriagem", urlPatterns = {
-  "/CadastrarTriagem"
+@WebServlet(name = "ExcluirTriagem", urlPatterns = {
+  "/ExcluirTriagem"
 })
-public class CadastrarTriagem extends HttpServlet {
+public class ExcluirTriagem extends HttpServlet {
   TriagemDAO dao = new TriagemDAO();
+
   Triagem inserir = new Triagem();
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,30 +34,21 @@ public class CadastrarTriagem extends HttpServlet {
     PrintWriter out = response.getWriter();
     String action = request.getServletPath();
 
+    
+    inserir.setIdcon(request.getParameter("idcon"));
+
     try {
+      // Seu código aqui
 
-      inserir.setNome(request.getParameter("nome"));
-      inserir.setDtnasc(request.getParameter("dtnasc"));
+      dao.excluirTriagem(inserir);
+      RequestDispatcher dispatcher = request.getRequestDispatcher("/ExibirTriagem");
+      dispatcher.forward(request, response);
 
-      inserir.setCpf(request.getParameter("cpf"));
-      inserir.setMedico(request.getParameter("medico"));
-      inserir.setEsp(request.getParameter("esp"));
-      inserir.setConsult(request.getParameter("consult"));
-      inserir.setHora_ent(request.getParameter("hora_ent"));
-      inserir.setHora_prev(request.getParameter("hora_prev"));
-      inserir.setUrg(request.getParameter("urg"));
-
-      dao.inserirTriagem(inserir);
-
-    } catch (Exception e) {
-      e.printStackTrace();
-
+    } catch (SQLException e) {
+      e.printStackTrace(); // Log da exceção (pode ser substituído por um framework de log)
+      // Adicione uma mensagem de erro ao request para exibição no JSP, por exemplo:
+      out.println("Erro ao atualizar o contato: " + e.getMessage());
     }
-    
-    
-
-    RequestDispatcher dispatcher = request.getRequestDispatcher("/ExibirTriagem");
-    dispatcher.forward(request, response); 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

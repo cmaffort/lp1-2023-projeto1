@@ -20,43 +20,48 @@ import java.util.ArrayList;
  *
  * @author joaop
  */
-@WebServlet(name = "CadastrarTriagem", urlPatterns = {
-  "/CadastrarTriagem"
+@WebServlet(name = "SelecionarTriagem", urlPatterns = {"/editarcontato", "/apagarcontato",
+  "/SelecionarTriagem"
 })
-public class CadastrarTriagem extends HttpServlet {
-  TriagemDAO dao = new TriagemDAO();
-  Triagem inserir = new Triagem();
+public class SelecionarTriagem extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
   throws ServletException, IOException {
     PrintWriter out = response.getWriter();
     String action = request.getServletPath();
 
-    try {
+    TriagemDAO dao = new TriagemDAO();
+    Triagem inserir = new Triagem();
 
-      inserir.setNome(request.getParameter("nome"));
-      inserir.setDtnasc(request.getParameter("dtnasc"));
+    ArrayList < Triagem > lista = dao.listarContatos();
 
-      inserir.setCpf(request.getParameter("cpf"));
-      inserir.setMedico(request.getParameter("medico"));
-      inserir.setEsp(request.getParameter("esp"));
-      inserir.setConsult(request.getParameter("consult"));
-      inserir.setHora_ent(request.getParameter("hora_ent"));
-      inserir.setHora_prev(request.getParameter("hora_prev"));
-      inserir.setUrg(request.getParameter("urg"));
+    request.setAttribute("contatos", lista);
+    String idcon = request.getParameter("idcon");
 
-      dao.inserirTriagem(inserir);
+    inserir.setIdcon(idcon);
 
-    } catch (Exception e) {
-      e.printStackTrace();
+    dao.selecionarTriagem(inserir);
 
+    request.setAttribute("nomemodal", inserir.getNome());
+    request.setAttribute("espmodal", inserir.getEsp());
+    request.setAttribute("cpfmodal", inserir.getCpf());
+    request.setAttribute("dtnascmodal", inserir.getDtnasc());
+    request.setAttribute("urgmodal", inserir.getUrg());
+    request.setAttribute("idconmodal", inserir.getIdcon());
+    
+    if(action.equals("/editarcontato")){
+    request.setAttribute("Modal", true);
+    request.setAttribute("Modalapagar", false);
+    RequestDispatcher dispatcher = request.getRequestDispatcher("triagem.jsp");
+    dispatcher.forward(request, response);
+    }
+    else if(action.equals("/apagarcontato")){
+    request.setAttribute("Modalapagar", true);
+    request.setAttribute("Modal", false);
+    RequestDispatcher dispatcher = request.getRequestDispatcher("triagem.jsp");
+    dispatcher.forward(request, response);
     }
     
-    
-
-    RequestDispatcher dispatcher = request.getRequestDispatcher("/ExibirTriagem");
-    dispatcher.forward(request, response); 
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
